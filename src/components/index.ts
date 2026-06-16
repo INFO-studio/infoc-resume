@@ -1,11 +1,14 @@
+export { default as CodeEditor } from './codeEditor';
 export { default as ContentSection } from './contentSection';
 export type { IconName, IconProps } from './icon';
 export { default as Icon } from './icon';
 export { default as Link } from './link';
+export { default as OnlineEditorButton } from './onlineEditor';
 export { default as Popover } from './popover';
 export { default as PrintButton } from './printButton';
 export { default as SectionContent } from './sectionContent';
 export { default as SectionItem } from './sectionItem';
 export { default as SectionTitle } from './sectionTitle';
+export { default as Sheet } from './sheet';
 export { default as Tag } from './tag';
 export { default as ThemeProvider } from './themeProvider';

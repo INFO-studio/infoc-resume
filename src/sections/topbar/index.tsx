@@ -2,10 +2,11 @@ import dayjs from 'dayjs';
 import type { FC } from 'react';
 import { Icon } from '@/components';
 
-import config from '@/config';
+import { useResumeConfig } from '@/contexts/resumeConfigContext';
 import { ConfigDefault } from '@/utils';
 
 const Topbar: FC = () => {
+  const { config } = useResumeConfig();
   const { enable, left, right, sourceStatement } = config.topbar;
 
   if (!enable) {

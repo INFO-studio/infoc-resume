@@ -17,6 +17,16 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
+      "@base-ui-components/react/*": [
+        "node_modules/@base-ui/react/*",
+        "node_modules/@base-ui/react/*/index.js",
+        "node_modules/@base-ui/react/esm/*/index.js"
+      ],
+      "@base-ui/react/*": [
+        "node_modules/@base-ui/react/*",
+        "node_modules/@base-ui/react/*/index.js",
+        "node_modules/@base-ui/react/esm/*/index.js"
+      ],
       "@/*": ["src/*"]
     },
 

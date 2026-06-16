@@ -1,9 +1,10 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: partial */
 import type { FC } from 'react';
 import { ContentSection } from '@/components';
-import config from '@/config';
+import { useResumeConfig } from '@/contexts/resumeConfigContext';
 
 const Content: FC = () => {
+  const { config } = useResumeConfig();
   return (
     <div className={'flex flex-col gap-.5'}>
       {config.content.map((contentItem, index) => (

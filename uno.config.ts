@@ -2,7 +2,7 @@ import { defineConfig, presetMini } from 'unocss';
 
 export default defineConfig({
   presets: [presetMini()],
-  rules: [['list-disc', { 'list-style': 'disc', 'margin-left': '1em'}]],
+  rules: [['list-disc', { 'list-style': 'disc', 'margin-left': '1em' }]],
   theme: {
     colors: {
       'primary-fg': 'var(--color-primary-fg)',
