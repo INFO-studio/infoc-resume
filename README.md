@@ -61,11 +61,11 @@ export default defineConfig({
 所有图标字段都支持两种写法：
 
 - 字符串形式（用默认颜色）
-```json
+```
 { titleIconPrefix: 'github' }
 ```
 - 对象形式（自定义颜色）
-```json
+```
 { titleIconPrefix: { name: 'react', color: '#61dafb' } }
 ```
 
