@@ -11,11 +11,9 @@ createRoot(document.getElementById('root')!).render(
     <ResumeConfigProvider>
       <ThemeProvider>
         <div className="resume-viewport resume-viewport--editor">
-          <div className="w-full max-w-[1920px] mx-auto flex justify-end items-center gap-2 px-4 pt-4 print:hidden">
-            <PrintButton />
-          </div>
-          <div className="w-full max-w-[1920px] mx-auto flex flex-col items-stretch">
+          <div className="resume-shell w-full max-w-[1920px] mx-auto flex flex-col flex-1 min-h-0">
             <OnlineEditorPanel
+              actions={<PrintButton />}
               preview={
                 <article className="resume-page">
                   <div className="resume-body">

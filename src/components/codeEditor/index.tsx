@@ -151,7 +151,8 @@ const CodeEditor: FC<CodeEditorProps> = ({
     [],
   );
 
-  // 挂载
+  // 挂载（初始 doc 用 value；后续变更由下方受控 effect 同步，勿把 value 加入 deps）
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount once; value synced in dedicated effect
   useEffect(() => {
     if (!hostRef.current) return;
     const state = EditorState.create({
@@ -165,7 +166,7 @@ const CodeEditor: FC<CodeEditorProps> = ({
       viewRef.current = null;
     };
     // —— 按设计：首次挂载时用 value，之后完全靠 props 的同步 effect 更新
-  }, [language, value, readOnly, placeholder, createExtensions]);
+  }, [language, readOnly, placeholder, createExtensions]);
 
   // 响应 language / readOnly / placeholder 变化（不重建 view）
   useEffect(() => {

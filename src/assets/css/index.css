@@ -28,6 +28,17 @@ ul {
   list-style: none;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .resume-viewport {
   display: flex;
   flex-direction: column;
@@ -36,8 +47,12 @@ ul {
   gap: 16px;
   width: 100%;
   min-height: 100vh;
-  padding: 16px;
   overflow: auto;
+}
+
+.resume-shell {
+  flex: 1;
+  min-height: 0;
 }
 
 .resume-page {
@@ -58,53 +73,154 @@ ul {
 
 @media print {
   @page {
-    size: A4;
+    size: A4 portrait;
     margin: 0;
   }
 
   html,
-  body,
-  #root {
-    width: 100%;
-    height: 100%;
-    background: #fff;
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  .resume-viewport {
+  #root {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
     padding: 0;
-    height: 100%;
-    min-height: auto;
     overflow: visible;
   }
 
+  /* 只打印简历页：隐藏其余 DOM，避免编辑器布局干扰 */
+  body * {
+    visibility: hidden;
+  }
+
+  .resume-page,
+  .resume-page * {
+    visibility: visible;
+  }
+
+  .resume-viewport,
+  .resume-viewport--editor,
+  .resume-shell,
+  .online-editor-panel,
+  .online-editor-shell,
+  .online-editor-body,
+  .online-editor-preview {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  .online-editor-shell {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  .online-editor-toolbar,
+  .online-editor-column,
+  .online-editor-aside,
+  .online-editor-splitter,
   .print-button {
-    display: none;
+    display: none !important;
+  }
+
+  /* Base UI 浮层不参与打印 */
+  body > :not(#root) {
+    display: none !important;
   }
 
   .resume-page {
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    background: #fff;
     border: none;
     border-radius: 0;
     box-shadow: none;
+    overflow: visible;
     page-break-after: avoid;
     page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .resume-body {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow: visible;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 }
 
-/* 在线编辑器模式：让默认 resume-viewport 铺满 */
+/* 在线编辑器：视口留白，外层 shell 浅底边框 */
 .resume-viewport--editor {
-  padding-top: 8px;
-  gap: 8px;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 0;
+  gap: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* 编辑器面板内的预览卡片使用浅灰背景，视觉上把编辑器和预览分隔开 */
-.online-preview-anchor {
-  width: 100%;
+/* 仅开关动画时：容器宽度 + 预览列宽度过渡（拖动时不加此类名） */
+.online-editor-body--animating .online-editor-preview-width {
+  transition: width var(--panel-ms, 300ms) ease-out;
+}
+
+.online-editor-body--animating .online-editor-column {
+  transition: width var(--panel-ms, 300ms) ease-out;
+}
+
+.online-editor-slide {
+  flex-shrink: 0;
+}
+
+.online-editor-slide--open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.online-editor-slide--closed {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.online-editor-slide--animating {
+  transition:
+    transform var(--panel-ms, 300ms) ease-out,
+    opacity var(--panel-ms, 300ms) ease-out;
+  will-change: transform, opacity;
+}
+
+.online-editor-slide--animating.online-editor-slide--closed {
+  pointer-events: none;
 }

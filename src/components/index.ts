@@ -1,11 +1,12 @@
 export { default as CodeEditor } from './codeEditor';
+export type { ConfirmDialogProps } from './confirmDialog';
+export { default as ConfirmDialog } from './confirmDialog';
 export { default as ContentSection } from './contentSection';
 export type { IconName, IconProps } from './icon';
 export { default as Icon } from './icon';
 export { default as Link } from './link';
 export type { OnlineEditorPanelProps } from './onlineEditor';
 export { default as OnlineEditorPanel } from './onlineEditor';
-export { default as Popover } from './popover';
 export { default as PrintButton } from './printButton';
 export { default as SectionContent } from './sectionContent';
 export { default as SectionItem } from './sectionItem';

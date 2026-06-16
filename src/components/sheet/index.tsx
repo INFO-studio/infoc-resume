@@ -1,4 +1,5 @@
 import { Dialog, type DialogBackdropProps } from '@base-ui/react/dialog';
+import { X } from 'lucide-react';
 import type { FC, ReactNode } from 'react';
 
 export type SheetProps = {
@@ -65,7 +66,7 @@ const Sheet: FC<SheetProps> = ({
                 }
                 type="button"
               >
-                ✕
+                <X size={16} />
               </Dialog.Close>
             </div>
           ) : null}
