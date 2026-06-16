@@ -28,7 +28,7 @@ const PersonalInfo: FC = () => {
         <div className={'text-lg truncate'}>{exceptPosition}</div>
       </div>
       <div className={'h-2px rounded-full bg-primary-fg'} />
-      <div className={'px-4 flex justify-between text-neutral-2'}>
+      <div className={'px-4 flex justify-between text-neutral-2 text-sm'}>
         <div className={'flex flex-col'}>
           {(gender || birthday) && (
             <div className={'flex items-center gap-1'}>

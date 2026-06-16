@@ -13,6 +13,11 @@ export {
   type ResumeConfigTopbar,
 } from './defineConfig';
 export { default as mergeDefault } from './mergeDefault';
-export { default as parseIconProps, type IconConfig } from './parseIconProps';
+export {
+  default as parseIconProps,
+  type IconConfig,
+  type IconConfigInput,
+  parseIconPropsList,
+} from './parseIconProps';
 export { default as renderText } from './renderText';
 export type { DeepRequired } from './typeDeepRequired';

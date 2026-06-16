@@ -5,7 +5,7 @@ import config from '@/config';
 
 const Content: FC = () => {
   return (
-    <div className={'flex flex-col gap-1'}>
+    <div className={'flex flex-col gap-.5'}>
       {config.content.map((contentItem, index) => (
         <ContentSection section={contentItem} key={`${contentItem.sectionTitle}_${index}`} />
       ))}

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { DeepRequired, IconConfig } from '@/utils';
+import type { DeepRequired, IconConfig, IconConfigInput } from '@/utils';
 import mergeDefault from '../mergeDefault';
 
 export const ConfigDefault = Symbol('ConfigDefault');
@@ -78,10 +78,10 @@ export type ResumeConfigContentItemItemListItemLinkListItem = {
 
 export type ResumeConfigContentItemItemListItem = {
   title: string;
-  titleIconPrefix?: IconConfig;
+  titleIconPrefix?: IconConfigInput;
   linkList?: Array<ResumeConfigContentItemItemListItemLinkListItem>;
   tagList?: Array<string>;
-  contentList: Array<string>;
+  contentList?: Array<string>;
   contentStyle?: 'list' | 'paragraph' | 'none';
 };
 

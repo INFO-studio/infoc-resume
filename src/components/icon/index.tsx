@@ -8,7 +8,9 @@ import ColorMicrosoftIcon from '@/assets/icons/ColorMicrosoftIcon';
 import ElectronIcon from '@/assets/icons/ElectronIcon';
 import GithubIcon from '@/assets/icons/GithubIcon';
 import JavascriptIcon from '@/assets/icons/JavascriptIcon';
+import LynxIcon from '@/assets/icons/LynxIcon';
 import NodedotjsIcon from '@/assets/icons/NodedotjsIcon';
+import SassIcon from '@/assets/icons/SassIcon';
 import QQIcon from '@/assets/icons/QQIcon';
 import ReactIcon from '@/assets/icons/ReactIcon';
 import ShadcnuiIcon from '@/assets/icons/ShadcnuiIcon';
@@ -16,6 +18,7 @@ import TailwindcssIcon from '@/assets/icons/TailwindcssIcon';
 import TypescriptIcon from '@/assets/icons/TypescriptIcon';
 import UnocssIcon from '@/assets/icons/UnocssIcon';
 import ViteIcon from '@/assets/icons/ViteIcon';
+import VueIcon from '@/assets/icons/VueIcon';
 import WechatIcon from '@/assets/icons/WechatIcon';
 
 const ICONS = {
@@ -36,6 +39,9 @@ const ICONS = {
   nodejs: NodedotjsIcon,
   tailwindcss: TailwindcssIcon,
   'shadcn-ui': ShadcnuiIcon,
+  vue: VueIcon,
+  sass: SassIcon,
+  lynx: LynxIcon,
 } as const;
 
 export type IconAssetName = keyof typeof ICONS;
