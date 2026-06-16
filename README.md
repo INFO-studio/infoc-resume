@@ -2,6 +2,8 @@
 
 一页纸简历生成器 —— 基于 React + Vite + UnoCSS，直接打印为 PDF。
 
+![Preview](./public/preview.png)
+
 ## 特性
 
 - **配置驱动** — 所有简历内容都在 `src/config.ts` 里配置，零代码上手
