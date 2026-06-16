@@ -15,14 +15,10 @@ import defineConfigFn, { ConfigDefault, type ResumeConfig } from '@/utils/define
 export type EvaluatedConfig = ReturnType<typeof defineConfigFn>;
 
 type Ctx = {
-  /** 用户当前编辑的 TS 源码 */
   source: string;
   setSource: (next: string) => void;
-  /** 解析后并经过 mergeDefault 的最终配置；解析失败会回退到默认 */
   config: EvaluatedConfig;
-  /** 解析错误；无错为 null */
   parseError: string | null;
-  /** 是否与默认配置不同 */
   isCustom: boolean;
   resetDefault: () => void;
   exportConfig: () => void;
@@ -32,21 +28,48 @@ const STORAGE_KEY = 'infoc-resume:config-source:v1';
 
 const stripImports = (src: string) =>
   src.replace(
-    /^\s*import\s+(?:type\s+)?(?:{[\s\S]*?}|[^;'\n]+)\s+from\s+['"][^'"\n]+['"]\s*;?/gm,
+    /^\s*import\s+(?:type\s+)?(?:{[\s\S]*?}|[^;'"`\n]+)\s+from\s+['"`][^'"`\n]+['"`]\s*;?/gm,
     '',
   );
 
+/**
+ * 从编译后的代码里取出 default 导出作为表达式。
+ * - sucrase 的 imports transform 默认会输出 CommonJS：
+ *     "use strict"; Object.defineProperty(exports, "__esModule", ...); exports.default = ...
+ * - 兜底：如果源码仍然是 ESM，支持 `export default ...`。
+ */
+const extractDefaultExpr = (jsCode: string): string => {
+  // 去掉文件开头的 "use strict" / __esModule 等前置语句（不包含 default 赋值的行）
+  const cjsRe = /exports(?:\s*\.\s*)?default\s*=\s*([\s\S]+)$/;
+  const m1 = jsCode.match(cjsRe);
+  if (m1?.[1]) {
+    return m1[1].replace(/;+\s*$/, '').trim();
+  }
+  return jsCode
+    .replace(/^\s*export\s+default\s+/m, '')
+    .replace(/;+\s*$/, '')
+    .trim();
+};
+
 const tryEval = (src: string): { ok: true; value: ResumeConfig } | { ok: false; error: string } => {
   try {
-    const js = transform(stripImports(src), {
+    const noImports = stripImports(src);
+    const js = transform(noImports, {
       transforms: ['typescript', 'imports'],
       disableESTransforms: true,
       jsxRuntime: 'preserve',
     }).code;
 
-    const expr = js.replace(/^\s*export\s+default\s+/m, '').replace(/;+\s*$/, '');
+    const expr = extractDefaultExpr(js);
+    if (!expr) {
+      return {
+        ok: false,
+        error: '无法解析默认导出，请保留 `export default defineConfig({ ... })` 写法',
+      };
+    }
 
-    // eslint-disable-next-line no-new-func
+    // 沙箱执行：defineConfig / ConfigDefault 作为参数注入
+    // eslint-disable-next-line no-new-func, @typescript-eslint/no-implied-eval
     const fn = new Function('defineConfig', 'ConfigDefault', `"use strict"; return (${expr});`) as (
       defineConfig: typeof defineConfigFn,
       configDefault: typeof ConfigDefault,

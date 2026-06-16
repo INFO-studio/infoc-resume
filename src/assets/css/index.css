@@ -97,3 +97,14 @@ ul {
     print-color-adjust: exact;
   }
 }
+
+/* 在线编辑器模式：让默认 resume-viewport 铺满 */
+.resume-viewport--editor {
+  padding-top: 8px;
+  gap: 8px;
+}
+
+/* 编辑器面板内的预览卡片使用浅灰背景，视觉上把编辑器和预览分隔开 */
+.online-preview-anchor {
+  width: 100%;
+}
