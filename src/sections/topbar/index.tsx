@@ -13,7 +13,7 @@ const Topbar: FC = () => {
   }
 
   return (
-    <div className={'h-8 px-4 flex justify-between items-center text-n3 text-xs font-bold'}>
+    <div className={'h-8 px-4 flex justify-between items-center text-neutral-3 text-xs font-bold'}>
       {left === ConfigDefault ? (
         <div className={'flex items-center gap-.5'}>
           <div>本简历使⽤</div>

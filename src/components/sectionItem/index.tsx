@@ -18,7 +18,7 @@ const SectionItem: FC<SectionItemProps> = ({ item }) => {
           {titleIconPrefixParsed && (
             <Icon name={titleIconPrefixParsed.name} color={titleIconPrefixParsed.color} />
           )}
-          <div className={'text-prfg text-sm font-bold'}>{title}</div>
+          <div className={'text-primary-fg text-sm font-bold'}>{title}</div>
         </div>
         <div className={'flex items-center gap-2'}>
           {linkList && (
@@ -28,7 +28,7 @@ const SectionItem: FC<SectionItemProps> = ({ item }) => {
                 const linkIconSuffixParsed = parseIconProps(link.iconSuffix);
                 return (
                   <Fragment key={`${link.link}_${index}`}>
-                    {index > 0 && <div className={'text-n3'}>、</div>}
+                    {index > 0 && <div className={'text-neutral-3'}>、</div>}
                     {linkIconPrefixParsed && (
                       <Icon name={linkIconPrefixParsed.name} color={linkIconPrefixParsed.color} />
                     )}

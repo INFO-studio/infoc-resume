@@ -12,36 +12,14 @@
 
 ## 快速开始
 
-### 环境要求
-
-- Node.js >= 18
-- pnpm >= 8
-
-### 安装依赖
-
-```bash
-pnpm setup
-```
-
-### 启动开发服务器
-
-```bash
-pnpm dev
-```
-
+1. 环境要求
+   - Node.js >= 18
+   - pnpm >= 6
+2. 安装依赖
+    - `pnpm setup`
+3. 启动开发服务器
+    - `pnpm dev`
 启动后访问 <http://localhost:5173> 即可预览。
-
-### 构建生产版本
-
-```bash
-pnpm build
-```
-
-### 代码格式化
-
-```bash
-pnpm check
-```
 
 ## 如何修改
 
@@ -71,26 +49,28 @@ export default defineConfig({
 
 在 `contentList` 等文本字段中可以使用：
 
-| 语法 | 效果 |
-|---|---|
-| `**文字**` | **加粗** |
+| 语法         | 效果     |
+|------------|--------|
+| `**文字**`   | **加粗** |
 | `` `代码` `` | `行内代码` |
 
 ### 图标配置
 
 所有图标字段都支持两种写法：
 
-```ts
+```json lines
 // 字符串形式（用默认颜色）
-titleIconPrefix: 'github',
+{ titleIconPrefix: 'github' }
 
 // 对象形式（自定义颜色）
-titleIconPrefix: { name: 'react', color: '#61dafb' },
+{ titleIconPrefix: { name: 'react', color: '#61dafb' } }
 ```
 
-内置图标：`react` / `vite` / `unocss` / `github` / `bytedance` / `qq` / `wechat` / `javascript` / `typescript` / `electron` / `nodejs` / `tailwindcss` / `shadcn-ui` / `color-bytedance` / `color-google` / `color-cloudflare` / `color-microsoft` 等。
+内置图标：`react` / `vite` / `unocss` / `github` / `bytedance` / `qq` / `wechat` 等。
 
-也可以用 `lucide-xxx` 前缀调用 Lucide 图标，比如 `lucide-mail`、`lucide-github`。
+也可以用 `lucide-xxx` 前缀调用 [Lucide 图标](https://lucide.dev/icons)，比如 `lucide-mail`、`lucide-github`。
+
+你可以自行导入图标，推荐使用 [Simple Icons](https://simpleicons.org/)（单色图标）、[theSVG](https://thesvg.org/)（彩色图标）
 
 ### 导出 PDF
 
@@ -106,7 +86,8 @@ titleIconPrefix: { name: 'react', color: '#61dafb' },
 ### 添加一个新的图标
 
 ```
-帮我在 src/assets/icons/ 下新增一个 XxxIcon.tsx 图标组件，仿照已有的图标格式（FC<SVGProps<SVGSVGElement>>，fill="currentColor"），并在 src/components/icon/index.tsx 中注册。图标名：xxx，路径 d="..."
+帮我在 src/assets/icons/ 下新增一个 XxxIcon.tsx 图标组件，仿照已有的图标格式（FC<SVGProps<SVGSVGElement>>，fill="currentColor"），并在 src/components/icon/index.tsx 中注册。
+图标名：xxx，路径 xxx
 ```
 
 ### 修改简历配置
@@ -134,9 +115,9 @@ src/
 ├── assets/
 │   ├── icons/          # 自定义 SVG 图标
 │   └── css/            # 全局样式
-├── components/         # 通用组件（Icon、Tag、Link、Popover、SectionItem...）
+├── components/         # 通用组件
 ├── sections/           # 简历各板块组件
-├── utils/              # 工具函数（defineConfig、mergeDefault、renderText、parseIconProps...）
+├── utils/              # 工具函数
 ├── view/               # 页面入口
 └── config.ts           # 简历配置（大概率只改这个）
 ```

@@ -6,8 +6,8 @@ export type TagProps = {
 
 const Tag: FC<TagProps> = ({ content }) => {
   return (
-    <div className={'inline-flex text-prfg text-xs justify-center items-center'}>
-      <div className={'px-1 py-.25 bg-prbg rounded-1'}>{content}</div>
+    <div className={'inline-flex text-primary-fg text-xs justify-center items-center'}>
+      <div className={'px-1 py-.25 bg-primary-bg rounded-1'}>{content}</div>
     </div>
   );
 };

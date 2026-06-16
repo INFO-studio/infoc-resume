@@ -9,7 +9,7 @@ export type LinkProps = {
 
 const Link: FC<LinkProps> = ({ content, suffixIcon, href }) => {
   return (
-    <a href={href} className={'inline-flex decoration-none items-center gap-1 text-prfg'}>
+    <a href={href} className={'inline-flex decoration-none items-center gap-1 text-primary-fg'}>
       {content}
       {suffixIcon ?? <Icon name={'lucide-square-arrow-out-up-right'} />}
     </a>

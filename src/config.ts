@@ -1,6 +1,18 @@
-import { ConfigDefault, defineConfig } from '@/utils';
+import { ConfigDefault, default as defineConfig } from './utils/defineConfig';
 
 export default defineConfig({
+  theme: {
+    colors: {
+      'primary-fg': '#302E81',
+      'primary-bg': '#DBE9FE',
+      'code-bg': '#F3F3F3',
+      'neutral-1': '#000000',
+      'neutral-2': '#1F2937',
+      'neutral-3': '#9CA3AF',
+      'neutral-4': '#E5E7EB',
+      'neutral-5': '#FFFFFF',
+    },
+  },
   topbar: {
     enable: true,
     left: ConfigDefault,

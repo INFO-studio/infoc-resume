@@ -18,7 +18,7 @@ const PrintButton: FC = () => {
     >
       <button
         className={
-          'bg-n4 border-0 rounded-1 color-prfg w-24 h-6 hover:bg-prbg transition-colors cursor-pointer'
+          'bg-neutral-4 border-0 rounded-1 color-primary-fg w-24 h-6 hover:bg-primary-bg transition-colors cursor-pointer'
         }
         type={'button'}
         onClick={() => window.print()}

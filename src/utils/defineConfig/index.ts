@@ -1,11 +1,28 @@
 import type { ReactNode } from 'react';
+import type { DeepRequired, IconConfig } from '@/utils';
 import mergeDefault from '../mergeDefault';
-import type { IconConfig } from '../parseIconProps';
-import type { DeepRequired } from '../typeDeepRequired';
 
 export const ConfigDefault = Symbol('ConfigDefault');
 
 type DefaultType = typeof ConfigDefault;
+
+export type ResumeConfigThemeColors = Partial<
+  Record<
+    | 'primary-fg'
+    | 'primary-bg'
+    | 'code-bg'
+    | 'neutral-1'
+    | 'neutral-2'
+    | 'neutral-3'
+    | 'neutral-4'
+    | 'neutral-5',
+    string
+  >
+>;
+
+export type ResumeConfigTheme = {
+  colors?: ResumeConfigThemeColors;
+};
 
 export type ResumeConfigTopbar = {
   enable?: boolean;
@@ -86,12 +103,25 @@ export type ResumeConfigContentItemFull = {
 };
 
 export type ResumeConfig = {
+  theme?: ResumeConfigTheme;
   topbar?: ResumeConfigTopbar;
   personalInfo?: ResumeConfigPersonalInfo;
   content?: Array<ResumeConfigContentItem>;
 };
 
 const defaultConfig: DeepRequired<ResumeConfig> = {
+  theme: {
+    colors: {
+      'primary-fg': '#302E81',
+      'primary-bg': '#DBE9FE',
+      'code-bg': '#F3F3F3',
+      'neutral-1': '#000000',
+      'neutral-2': '#1F2937',
+      'neutral-3': '#9CA3AF',
+      'neutral-4': '#E5E7EB',
+      'neutral-5': '#FFFFFF',
+    },
+  },
   topbar: {
     enable: true,
     left: ConfigDefault,

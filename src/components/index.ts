@@ -8,3 +8,4 @@ export { default as SectionContent } from './sectionContent';
 export { default as SectionItem } from './sectionItem';
 export { default as SectionTitle } from './sectionTitle';
 export { default as Tag } from './tag';
+export { default as ThemeProvider } from './themeProvider';

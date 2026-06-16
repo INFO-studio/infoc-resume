@@ -80,7 +80,7 @@ const renderText = (
       return <Code key={k} content={token.content} />;
     }
     return (
-      <code key={k} className="rounded-1 bg-codebg px-1 font-mono text-xs">
+      <code key={k} className="rounded-1 bg-code-bg px-1 font-mono text-xs">
         {token.content}
       </code>
     );

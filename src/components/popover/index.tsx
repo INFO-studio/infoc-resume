@@ -39,7 +39,7 @@ const Popover: FC<PopoverProps> = ({
       {visible && (
         <div
           role="tooltip"
-          className={`absolute left-1/2 z-10 w-max min-w-40 -translate-x-1/2 rounded-2 bg-prbg border border-n3 color-prfg text-xs shadow-md ${
+          className={`absolute left-1/2 z-10 w-max min-w-40 -translate-x-1/2 rounded-2 bg-primary-bg border border-neutral-3 color-primary-fg text-xs shadow-md ${
             placement === 'bottom' ? 'top-full mt-1' : 'bottom-full mb-1'
           }`}
           onMouseEnter={handleContentMouseEnter}

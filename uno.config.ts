@@ -5,14 +5,14 @@ export default defineConfig({
   rules: [['list-disc', { 'list-style': 'disc inside' }]],
   theme: {
     colors: {
-      prfg: '#302E81',
-      prbg: '#DBE9FE',
-      n1: '#000000',
-      n2: '#1F2937',
-      n3: '#9CA3AF',
-      n4: '#E5E7EB',
-      n5: '#FFFFFF',
-      codebg: '#F3F3F3'
+      'primary-fg': 'var(--color-primary-fg)',
+      'primary-bg': 'var(--color-primary-bg)',
+      'code-bg': 'var(--color-code-bg)',
+      'neutral-1': 'var(--color-neutral-1)',
+      'neutral-2': 'var(--color-neutral-2)',
+      'neutral-3': 'var(--color-neutral-3)',
+      'neutral-4': 'var(--color-neutral-4)',
+      'neutral-5': 'var(--color-neutral-5)',
     },
   },
 });
